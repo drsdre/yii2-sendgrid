@@ -208,7 +208,7 @@ class Message extends BaseMessage
     {
         // no available method for sendgrid
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -219,5 +219,15 @@ class Message extends BaseMessage
             $string .= sprintf("%s:%s\n", $key, $value);
         }
         return $string;
+    }
+
+    /**
+     * Add filter parameters
+     */
+    public function addFilter($filter, $key, $value)
+    {
+        $this->getSendGridMessage()->addFilter($filter, $key, $value);
+
+        return $this;
     }
 } 
